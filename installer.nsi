@@ -12,7 +12,7 @@
 
 # NSIS Dependencies
 # To build the installer:
-# (the required 2 plugins are now also embbed in this code repository in 
+# (the required 2 plugins are now also embbed in this code repository in
 # directory dependencies/NSIS_plugins/)
 # <http://nsis.sourceforge.net/NSIS_Simple_Service_Plugin>
 # <http://nsis.sourceforge.net/ShellLink_plug-in>
