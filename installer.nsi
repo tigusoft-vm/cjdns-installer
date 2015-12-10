@@ -6,16 +6,17 @@
 !define MUI_UNICON "installation/logo.ico"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "sidebar.bmp"
 
-!define PRODUCT_NAME "CJDNS for Windows"
-!define PRODUCT_VERSION "0.5-proto16"
-!define PRODUCT_PUBLISHER "Santa Cruz Meshnet Project"
+!define PRODUCT_NAME "Cjdns-extended for Windows"
+!define PRODUCT_VERSION "17.1-1-test"
+!define PRODUCT_PUBLISHER "Tigusoft BETA TESTING"
 
 # NSIS Dependencies
 # To build the installer:
-# Make sure you have the Simple Service Plugin from
+# (the required 2 plugins are now also embbed in this code repository in 
+# directory dependencies/NSIS_plugins/)
 # <http://nsis.sourceforge.net/NSIS_Simple_Service_Plugin>
-# AND the ShellLink plug-in from
 # <http://nsis.sourceforge.net/ShellLink_plug-in>
+#
 # You may have to second-guess the default DLL install paths 
 # for ANSI and Unicode DLLS on NSIS 3
 
