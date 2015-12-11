@@ -21,6 +21,15 @@
 # You may have to second-guess the default DLL install paths 
 # for ANSI and Unicode DLLS on NSIS 3
 
+var version_file
+var PRODUCT_VERSION
+
+Section "Read Version"
+	FileOpen $version_file "version" r
+	FileRead $version_file $PRODUCT_VERSION
+	FileClose $version_file
+SectionEnd
+
 # What is the installer called?
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
 OutFile "cjdns-installer-${PRODUCT_VERSION}.exe"
