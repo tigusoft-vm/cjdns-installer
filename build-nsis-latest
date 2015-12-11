@@ -16,4 +16,4 @@ echo "dir_exe=$dir_exe"
 
 cp -v ${dir_exe}/* installation/ || { echo "Can not copy some EXE files" ; exit 2 ; } 
 
-make-install-local-plugins.sh
+./make-install-local-plugins.sh

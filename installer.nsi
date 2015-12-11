@@ -7,9 +7,8 @@
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "sidebar.bmp"
 
 !define PRODUCT_NAME "Cjdns-extended for Windows"
-# this uses file from: /home/cjdns_build.pub/cjdroute.exe-20151210_135252+0000-windows2e-clean-git4f3dcb622e
-# !define PRODUCT_VERSION - this is now read from a file below. was e.g.: "17.1-1-crashey-test"
 !define PRODUCT_PUBLISHER "Tigusoft - BETA TESTING - NOT SECURE"
+!define /file PRODUCT_VERSION "installation/version.txt"
 
 # NSIS Dependencies
 # To build the installer:
@@ -21,14 +20,8 @@
 # You may have to second-guess the default DLL install paths 
 # for ANSI and Unicode DLLS on NSIS 3
 
-var version_file
-var PRODUCT_VERSION
 
-Section "Read Version"
-	FileOpen $version_file "installation/version.txt" r
-	FileRead $version_file $PRODUCT_VERSION
-	FileClose $version_file
-SectionEnd
+!echo "Product version is read as: ${PRODUCT_VERSION}"
 
 # What is the installer called?
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
