@@ -7,8 +7,9 @@
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "sidebar.bmp"
 
 !define PRODUCT_NAME "Cjdns-extended for Windows"
-#!define PRODUCT_VERSION "17.1-1-test"
-!define PRODUCT_PUBLISHER "Tigusoft BETA TESTING"
+# this uses file from: /home/cjdns_build.pub/cjdroute.exe-20151210_135252+0000-windows2e-clean-git4f3dcb622e
+# !define PRODUCT_VERSION - this is now read from a file below. was e.g.: "17.1-1-crashey-test"
+!define PRODUCT_PUBLISHER "Tigusoft - BETA TESTING - NOT SECURE"
 
 # NSIS Dependencies
 # To build the installer:
