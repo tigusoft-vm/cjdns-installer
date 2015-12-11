@@ -25,7 +25,7 @@ var version_file
 var PRODUCT_VERSION
 
 Section "Read Version"
-	FileOpen $version_file "version" r
+	FileOpen $version_file "installation/version.txt" r
 	FileRead $version_file $PRODUCT_VERSION
 	FileClose $version_file
 SectionEnd

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+dir_raw="$HOME/pub/raw/windows-exe/"
+
+echo "This will pack the files..."
+echo "You should have the builded (cross-builded) exe files like cjdroute.exe and others, "
+echo "ready in directory $dir_raw."
+
+echo ""
+
+dir_exe_part=$(ls -1 "$dir_raw" | tail -n 1)
+dir_exe="${dir_raw}${dir_exe_part}"
+
+echo "dir_exe=$dir_exe"
+
+cp -v ${dir_exe}/* installation/ || { echo "Can not copy some EXE files" ; exit 2 ; } 
+
+make-install-local-plugins.sh
