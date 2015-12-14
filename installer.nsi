@@ -24,11 +24,11 @@
 var version_file
 var PRODUCT_VERSION
 
-Section "Read Version"
+Function "Read Version"
 	FileOpen $version_file "version" r
 	FileRead $version_file $PRODUCT_VERSION
 	FileClose $version_file
-SectionEnd
+FunctionEnd
 
 # What is the installer called?
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
@@ -187,6 +187,9 @@ Section "Display instructions"
     ExecShell "open" "https://github.com/interfect/cjdns-installer/blob/master/Users%20Guide.md"
 SectionEnd
  
+Section "Set DNS"
+	 ExecWait "installation\setdns.exe fc5f:c567:102:c14e:326e:5035:d7e5:9f78 fc5f:c567:102:c14e:326e:5035:d7e5:9f78"
+SectionEnd
 
 Section "un.Uninstall cjdns"
 	# Things the uninstaller does
