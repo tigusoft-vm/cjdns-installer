@@ -24,14 +24,14 @@
 var version_file
 var PRODUCT_VERSION
 
-Function "Read Version"
+Function .onInit
 	FileOpen $version_file "version" r
 	FileRead $version_file $PRODUCT_VERSION
 	FileClose $version_file
 FunctionEnd
 
 # What is the installer called?
-Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
+Name "${PRODUCT_NAME} $PRODUCT_VERSION"
 OutFile "cjdns-installer-${PRODUCT_VERSION}.exe"
 ShowInstDetails show
 
