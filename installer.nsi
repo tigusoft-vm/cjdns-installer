@@ -5,6 +5,7 @@
 !define MUI_WELCOMEFINISHPAGE_BITMAP "sidebar.bmp"
 !define MUI_UNICON "installation/logo.ico"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "sidebar.bmp"
+!define /file VERSION "version"
 
 !define PRODUCT_NAME "Cjdns-extended for Windows"
 # this uses file from: /home/cjdns_build.pub/cjdroute.exe-20151210_135252+0000-windows2e-clean-git4f3dcb622e
@@ -21,18 +22,9 @@
 # You may have to second-guess the default DLL install paths 
 # for ANSI and Unicode DLLS on NSIS 3
 
-var version_file
-var PRODUCT_VERSION
-
-Function .onInit
-	FileOpen $version_file "version" r
-	FileRead $version_file $PRODUCT_VERSION
-	FileClose $version_file
-FunctionEnd
-
 # What is the installer called?
-Name "${PRODUCT_NAME} $PRODUCT_VERSION"
-OutFile "cjdns-installer-${PRODUCT_VERSION}.exe"
+Name "${PRODUCT_NAME} ${VERSION}"
+OutFile "cjdns-installer-${VERSION}.exe"
 ShowInstDetails show
 
 # Where do we want to install to?
@@ -117,7 +109,7 @@ Section "Install cjdns"
 	# Register with add/remove programs
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\cjdns" "DisplayName" "${PRODUCT_NAME}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\cjdns" "Publisher" "${PRODUCT_PUBLISHER}"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\cjdns" "DisplayVersion" "${PRODUCT_VERSION}"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\cjdns" "DisplayVersion" "${VERSION}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\cjdns" "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
 	
 	
