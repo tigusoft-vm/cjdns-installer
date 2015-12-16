@@ -56,6 +56,16 @@
                         "user": "ansuz",
                         "location":"Newark,NJ,USA"
                     },
+                    "193.25.1.157:48158": {
+                        "ipv6": "fc2f:22bf:e287:88ca:a896:896e:7e62:b411",
+                        "password": "public",
+                        "publicKey": "5lk736104jz5rw8m4t79llskvccqvrhvxu50np0h31ys4n8lv4f0.k"
+                    },
+                    "176.31.171.15:8988":{
+                        "website": "http://meshnet.pl/node/alien",
+                        "password": "meshnetpl2public000xyz",
+                        "publicKey": "3p1pj08w7tqnfd9p5gwrwpd8kpjbu5nmw2twkwbfullzlwt8jkg0.k"
+                    },
                     //////////////////////////////////////////////////////////////////////////////
                     // End public access peers                                                  //
                     //////////////////////////////////////////////////////////////////////////////
