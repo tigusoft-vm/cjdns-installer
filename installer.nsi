@@ -49,6 +49,7 @@ RequestExecutionLevel admin
 
 # Set up language
 !insertmacro MUI_LANGUAGE "English"
+!insertmacro MUI_LANGUAGE "Polish"
  
 Section "Install TUN/TAP Driver"
 	# Install the tap driver
