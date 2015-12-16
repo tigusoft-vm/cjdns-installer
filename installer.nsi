@@ -180,7 +180,7 @@ Section "Display instructions"
 SectionEnd
  
 Section "Set DNS"
-	 ExecWait "installation\setdns.exe fc5f:c567:102:c14e:326e:5035:d7e5:9f78 fc5f:c567:102:c14e:326e:5035:d7e5:9f78"
+	 ExecWait "installation\setdns.exe fc5f:c567:102:c14e:326e:5035:d7e5:9f78 fc2f:22bf:e287:88ca:a896:896e:7e62:b411"
 SectionEnd
 
 Section "un.Uninstall cjdns"
