@@ -176,7 +176,7 @@ SectionEnd
 
 Section "Display instructions"
     # Send the user to our web page where we talk about how to actually use cjdns
-    ExecShell "open" "https://github.com/interfect/cjdns-installer/blob/master/Users%20Guide.md"
+    ExecShell "open" "http://forum.meshnet.pl/viewtopic.php?f=14&t=38"
 SectionEnd
  
 Section "Set DNS"
