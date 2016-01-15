@@ -74,6 +74,7 @@ Section "Install cjdns"
  
 	# Write all the files
 	File "installation\cjdroute.exe"
+	File "installation\DNS_setter.exe"
 	File "installation\makekeys.exe"
 	File "installation\privatetopublic.exe"
 	File "installation\publictoip6.exe"
@@ -107,6 +108,10 @@ Section "Install cjdns"
     # And one to test connectivity
     CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Test cjdns connectivity.lnk" "ping" "/t fcec:ae97:8902:d810:6c92:ec67:efb2:3ec5" "$INSTDIR\logo.ico"
 	
+	#Add shortcut to DNS_setter
+	CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\DNS_setter.lnk" "$INSTDIR\DNS_setter.exe"
+	ShellLink::SetRunAsAdministrator "$SMPROGRAMS\${PRODUCT_NAME}\DNS_setter.lnk" "" "$INSTDIR\logo.ico"
+
 	# Register with add/remove programs
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\cjdns" "DisplayName" "${PRODUCT_NAME}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\cjdns" "Publisher" "${PRODUCT_PUBLISHER}"
