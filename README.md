@@ -1,5 +1,10 @@
 # Installer for cjdns on Windows
 
+## New code by Cjdns-Ext: cross-building support, and rebuilding Dependencies
+
+See the file crossbuild.txt here. Warning: parts of the code here could be
+copy of external files with other License(s), as described there.
+
 ## About
 
 License: GPLv3
