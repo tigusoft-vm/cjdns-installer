@@ -1,0 +1,63 @@
+Windows: secure cross-compilation from sources - using mingw.
+
+( This work is done mostly by CjdnsExt team; discussion forum: http://h.forum.meshnet.pl/viewtopic.php?f=9&t=41#p126 )
+
+This document describes the build procedure.
+Please excuse BB-code formatting used for now.
+
+
+Legend used in this post:
+
+[size=150][b]♨[/b][/size] - this is the source code
+[size=150][b]☺[/b][/size] - all ok here
+[size=150][b]✞[/b][/size] - we have fate and assume that this binary program is ok
+[size=150][b]⚖[/b][/size] - this produces deterministic binary file
+[size=150][b]⇲[/b][/size] - we assume this is ok and we do not want to dig deeper
+[size=150][b]⚠[/b][/size] - there is a problem
+
+Checking source code for exploits (either intentional or backdoors) is another topic, for now we just assume the source code (of the Cjdns authors) is legit.
+
+Our approach to this discussed here is to use [b]Mingw crosscompiler[/b], and run it on secure Linux machine.
+
+(After the build, the software needs to be properly signed/moved internally and published/delivered to end-users in a secure way, which is also separate topic to be discussed in other post).
+
+[b]TODO:[/b]
+
+* crossbuild, and review, NSIS_Simple_Service_Plugin_1.30.zip from source
+* crossbuild, and review, Shelllink.zip from source
+* crossbuild, and review, CjdnsService.exe from source
+
+Dependencies:
+
+* our installer:
+** [size=150][b]♨[/b][/size] download: [b]https://github.com/tigusoft/cjdns-installer/[/b]
+*** [size=150][b]♨[/b][/size] forked from https://github.com/interfect/cjdns-installer ( e.g. from e982196ddcccb56276276d53f40d3e2c30c7d79d )
+** it uses NSIS plugins
+** the plugins were provided as binary previously (https://github.com/tigusoft/cjdns-installer/tree/pr-include-needed-plugins with 9179e51d71455f7da3c80d967fd9f85b9caa1951 )
+*** [size=150][b]☺ ⚖?[/b][/size] plugin: NSIS_Simple_Service_Plugin_1.30 (.zip file was 1dc05293808c772ed0da931d47fae1ee5bb8e3d563534d5ed214a86a48d341ef)
+**** [size=150][b]♨[/b][/size] code was from NSIS homepage (copied into https://github.com/tigusoft/cjdns-installer/commit/9457e6ec6aca6caedbdf4d799a67bf7d44f20212)
+**** we need to have a cross-building FPC (Free Pascal Compiler)
+***** [size=150][b]♨[/b][/size] sources of fpc, e.g. "fpc-src" from Debian 8
+***** [size=150][b]✞[/b][/size] to compile the compiler we use Debian provided binary of FPC
+***** [size=150][b]⇨☺[/b][/size] we produce safe [b]SimpleSC.dll[/b] the build appear at least partially deterministic [size=150][b]⚖?[/b][/size] (sha256: 48cd5b38d7f1702f299a549d68d2011ad61b445227893e08c72ade3ba2e4e062  SimpleSC.dll on Debian 8 x86_64 in 2016-01) 
+*** plugin: Shelllink (.zip file was 789bc4610272f8b01de8e2889987d50c7dd401193a90350184e58cb4c26393b9)
+**** [size=150][b]♨[/b][/size] https://github.com/tigusoft/nsis-plugins-tigu/
+**** [size=150][b]♨[/b][/size] code is based on version from NSSI homepage (copied into https://github.com/tigusoft/nsis-plugins-tigu/commit/d232426764880060e90cae4222873a48cc25b22f)
+** it also uses CjdnsService.exe (ac585e49523ffd57e1083012228a3fb0f9de728ebc1c10145ef4cb6387608531) as provided by https://github.com/adamnovak in https://github.com/interfect/cjdns-installer e982196ddcccb56276276d53f40d3e2c30c7d79d
+**** [size=150][b]♨[/b][/size] https://github.com/tigusoft/nsis-plugins-tigu/
+*** [size=150][b]✞[/b][/size] mono-xbuild compiler from Debian
+** we also use tap-windows-9.21.1.exe a3fe9050e1fb4ead9646af09af808b9973db016b33854965b7cbfb262bdd897c it seems to match the binary published by http://build.openvpn.net/downloads/releases/ (and is signed by a gpg visible on their page download from various ISPs)
+*** [size=150][b]✞[/b][/size] we assume that this .exe by OpenVPN.net is trustworthy.
+
+
+gpg tap-windows-9.21.1.exe.asc 
+gpg: Signature made Fri 07 Nov 2014 14:29:23 CET
+gpg:                using DSA key 0xC29D97ED198D22A3
+gpg: Good signature from "Samuli Seppänen <samuli.seppanen@gmail.com>" [unknown]
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 0330 0E11 FED1 6F59 715F  9996 C29D 97ED 198D 22A3
+
+@tesla:~/cjdns-installer/TMP(master %=)$ sha256sum tap-windows-9.21.1.exe
+a3fe9050e1fb4ead9646af09af808b9973db016b33854965b7cbfb262bdd897c  tap-windows-9.21.1.exe
+
