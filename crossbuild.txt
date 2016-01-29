@@ -30,8 +30,8 @@ Our approach to this discussed here is to use [b]Mingw crosscompiler[/b], and ru
 Dependencies:
 
 * our installer:
-** [size=150][b]♨[/b][/size] download: [b]https://github.com/tigusoft/cjdns-installer/[/b]
-*** [size=150][b]♨[/b][/size] forked from https://github.com/interfect/cjdns-installer ( e.g. from e982196ddcccb56276276d53f40d3e2c30c7d79d )
+** [size=150][b]♨[/b][/size] download: https://github.com/tigusoft/cjdns-installer/
+*** [size=150][b]♨[/b][/size] forked from https://github.com/interfect/cjdns-installer/ ( e.g. from e982196ddcccb56276276d53f40d3e2c30c7d79d )
 ** it uses NSIS plugins
 ** the plugins were provided as binary previously (https://github.com/tigusoft/cjdns-installer/tree/pr-include-needed-plugins with 9179e51d71455f7da3c80d967fd9f85b9caa1951 )
 *** [size=150][b]☺ ⚖?[/b][/size] plugin: NSIS_Simple_Service_Plugin_1.30 (.zip file was 1dc05293808c772ed0da931d47fae1ee5bb8e3d563534d5ed214a86a48d341ef)
@@ -39,15 +39,18 @@ Dependencies:
 **** we need to have a cross-building FPC (Free Pascal Compiler)
 ***** [size=150][b]♨[/b][/size] sources of fpc, e.g. "fpc-src" from Debian 8
 ***** [size=150][b]✞[/b][/size] to compile the compiler we use Debian provided binary of FPC
-***** [size=150][b]⇨☺[/b][/size] we produce safe [b]SimpleSC.dll[/b] the build appear at least partially deterministic [size=150][b]⚖?[/b][/size] (sha256: 48cd5b38d7f1702f299a549d68d2011ad61b445227893e08c72ade3ba2e4e062  SimpleSC.dll on Debian 8 x86_64 in 2016-01) 
+***** [size=150][b]⇨☺[/b][/size] we produce safe FPC cross-compiler and install it locally on user doing the builds
+**** [size=150][b]⇨☺[/b][/size] we produce safe [b]SimpleSC.dll[/b] the build appear at least partially deterministic [size=150][b]⚖?[/b][/size] (sha256: 48cd5b38d7f1702f299a549d68d2011ad61b445227893e08c72ade3ba2e4e062  SimpleSC.dll on Debian 8 x86_64 in 2016-01) 
 *** plugin: Shelllink (.zip file was 789bc4610272f8b01de8e2889987d50c7dd401193a90350184e58cb4c26393b9)
+**** first we need to have nsis_ansi.a library
+***** [size=150][b]♨[/b][/size] source is from http://nsis.sourceforge.net/mediawiki/images/f/f0/NsJSON.zip 0da0280a33eea055315d10febcd6a0ce3af66804ba40ac243dae5b793e4b66ed
 **** [size=150][b]♨[/b][/size] https://github.com/tigusoft/nsis-plugins-tigu/
 **** [size=150][b]♨[/b][/size] code is based on version from NSSI homepage (copied into https://github.com/tigusoft/nsis-plugins-tigu/commit/d232426764880060e90cae4222873a48cc25b22f)
 ** it also uses CjdnsService.exe (ac585e49523ffd57e1083012228a3fb0f9de728ebc1c10145ef4cb6387608531) as provided by https://github.com/adamnovak in https://github.com/interfect/cjdns-installer e982196ddcccb56276276d53f40d3e2c30c7d79d
-**** [size=150][b]♨[/b][/size] https://github.com/tigusoft/nsis-plugins-tigu/
+*** [size=150][b]♨[/b][/size] https://github.com/tigusoft/nsis-plugins-tigu/
 *** [size=150][b]✞[/b][/size] mono-xbuild compiler from Debian
-** we also use tap-windows-9.21.1.exe a3fe9050e1fb4ead9646af09af808b9973db016b33854965b7cbfb262bdd897c it seems to match the binary published by http://build.openvpn.net/downloads/releases/ (and is signed by a gpg visible on their page download from various ISPs)
-*** [size=150][b]✞[/b][/size] we assume that this .exe by OpenVPN.net is trustworthy.
+** we also use tap-windows-9.21.1.exe a3fe9050e1fb4ead9646af09af808b9973db016b33854965b7cbfb262bdd897c
+*** [size=150][b]✞[/b][/size] we assume that this .exe by OpenVPN.net is trustworthy. Hash = a3fe9050e1fb4ead9646af09af808b9973db016b33854965b7cbfb262bdd897c and GPG signed.
 
 
 gpg tap-windows-9.21.1.exe.asc 
